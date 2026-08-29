@@ -1,0 +1,9 @@
+# Exclude build files
+.pio/
+.vscode/
+
+# Exclude compiled binaries
+*.exe
+*.o
+*.elf
+*.bin
