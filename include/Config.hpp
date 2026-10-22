@@ -11,4 +11,8 @@ namespace Config {
        
         constexpr bool IS_ACTIVE_LOW = true;
     }
+    namespace Sensors {
+        constexpr uint8_t BATTERY_VOLTAGE_PIN = 34;
+        constexpr float   ADC_REF_VOLTAGE     = 3.3f;
+    }
 }
