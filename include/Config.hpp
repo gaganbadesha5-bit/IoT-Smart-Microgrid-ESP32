@@ -12,7 +12,11 @@ namespace Config {
         constexpr bool IS_ACTIVE_LOW = true;
     }
     namespace Sensors {
-        constexpr uint8_t BATTERY_VOLTAGE_PIN = 34;
-        constexpr float   ADC_REF_VOLTAGE     = 3.3f;
-    }
+    constexpr uint8_t BATTERY_VOLTAGE_PIN    = 34;
+    constexpr uint8_t LOAD_CURRENT_PIN       = 35;
+    constexpr uint8_t AMBIENT_TEMP_PIN       = 36;
+    
+    constexpr float   ADC_REF_VOLTAGE        = 3.3f;
+    constexpr float   ACS712_30A_SENSITIVITY = 0.066f;
+}
 }
