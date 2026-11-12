@@ -7,9 +7,11 @@ private:
     float _r1;
     float _r2;
     float _referenceVoltage;
+    float _acCalibration;
 
 public:
     VoltageSensor(uint8_t pin, float r1 = 30000.0f, float r2 = 7500.0f, float refVoltage = 3.3f);
     void begin();
     float readVoltage();
+    float readACVoltageRMS();
 };

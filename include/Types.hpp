@@ -4,13 +4,15 @@
 
 struct MicrogridTelemetry {
 
-    float solarVoltage;
-    float solarCurrent;
     float batteryVoltage;
+    float gridVoltage;
+    float genVoltage;
     float loadCurrent;
+    float panelTempC;
 
     bool isGridAvailable;
     bool isSolarAvailable;
+    bool isGenAvailable;
     PowerSourceMode activeMode;
     SystemHealth healthStatus;
 };

@@ -21,3 +21,23 @@ float VoltageSensor::readVoltage() {
 
     return actualVoltage;
 }
+float VoltageSensor::readACVoltageRMS() {
+    const uint32_t sampleWindowUs = 40000; // 40ms window for 50Hz AC
+    uint32_t startMicros = micros();
+    uint32_t sampleCount = 0;
+    float sumSquared = 0.0f;
+    const float midPoint = _referenceVoltage / 2.0f; // ~1.65V DC bias
+
+    while ((micros() - startMicros) < sampleWindowUs) {
+        float pinVoltage = ((float)analogRead(_pin) / 4095.0f) * _referenceVoltage;
+        float acInst = pinVoltage - midPoint;
+        sumSquared += (acInst * acInst);
+        sampleCount++;
+        delayMicroseconds(200);
+    }
+
+    if (sampleCount == 0) return 0.0f;
+
+    float vRms = sqrtf(sumSquared / (float)sampleCount) * _acCalibration;
+    return (vRms < 15.0f) ? 0.0f : vRms;
+}
